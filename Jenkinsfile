@@ -1,9 +1,9 @@
 node {
     def nodeHome = tool name: 'node-16', type: 
-    'jenkins.plugins.nodejs.tools.NodeJSInstallation'
+    'jenkins.plugins.nodejs.tools.node-16'
     env.PATH = '${nodeHome}/bin:${env.PATH}'
 
-    stage('check') {
+    stage('check tools') {
         sh "node -v"
         sh "npm -v"
     }
