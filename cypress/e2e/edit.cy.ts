@@ -14,7 +14,7 @@ describe("Edit", () => {
         cy.get('#name').type(' Rocks!');
         cy.get('#save').click();
 
-        const list = cy.get('app-search table tbody tr');
+        const list = cy.get('app-search mat-list mat-list-item');
         list.should('have.length', 1);
     });
 });

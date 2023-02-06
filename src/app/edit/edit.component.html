@@ -7,34 +7,78 @@
             {{ person.id }}
         </div>
 
-        <div>
+        <p>
+            <mat-form-field>
+                <input matInput [(ngModel)]="person.name" name="name" id="name" placeholder="Name" required>
+            </mat-form-field>
+        </p>
+
+        <!-- <div>
             <label>Name:</label>
             <input [(ngModel)]="person.name" name="name" id="name" placeholder="Name" required #name="ngModel">
             
             <div [hidden]="name.valid || name.pristine" style="color: red;">Name is required</div>
-        </div>
+        </div> -->
 
-        <div>
+        <p>
+            <mat-form-field>
+                <input matInput [(ngModel)]="person.phone" name="phone" id="phone" placeholder="Phone">
+            </mat-form-field>
+        </p>
+
+        <!-- <div>
             <label>Phone:</label>
             <input [(ngModel)]="person.phone" name="phone" id="phone" placeholder="Phone">
-        </div>
+        </div> -->
 
-        <fieldset>
+        <table>
+            <tr>
+                <td>
+                    <mat-form-field>
+                        <input matInput placeholder="Address" [(ngModel)]="person.address.street" name="street" id="street"><br/>
+                    </mat-form-field>
+                </td>
+
+                <td>
+                    <mat-form-field>
+                        <input matInput placeholder="City" [(ngModel)]="person.address.city" name="city" id="city">
+                    </mat-form-field>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <mat-form-field>
+                        <input matInput placeholder="State" #state [(ngModel)]="person.address.state" name="state" id="state" maxlength="2">
+                    </mat-form-field>
+                </td>
+
+                <td>
+                    <mat-form-field>
+                        <input matInput placeholder="Zip" #postalCode [(ngModel)]="person.address.zip" name="zip" id="zip" maxlength="5">
+
+                        <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+
+        <!-- <fieldset>
             <legend>Address:</legend>
 
             <address>
-                <input [(ngModel)]="person.address.street" name="street" id="street"><br/>
+                <input [(ngModel)]="person.address.street" name="street" id="street"><br/> 
 
                 <input [(ngModel)]="person.address.city" name="city" id="city">,
 
                 <input [(ngModel)]="person.address.state" name="state" id="state" size="2">
 
-                <input [(ngModel)]="person.address.zip" name="zip" id="zip" size="5">
+                <input [(ngModel)]="person.address.zip" name="zip" id="zip" size="5"> 
             </address>
-        </fieldset>
+        </fieldset> -->
 
-        <button type="submit" id="save" [disabled]="!editForm.form.valid" (click)="save()" id="save">Save</button>
+        <button mat-raised-button type="submit" color="primary" id="save" [disabled]="!editForm.form.valid">Save</button>
 
-        <button (click)="cancel()" id="cancel">Cancel</button>
+        <button mat-button (click)="cancel(); false" id="cancel">Cancel</button>
     </form> 
 </div>
