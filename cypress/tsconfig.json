@@ -4,5 +4,10 @@
   "compilerOptions": {
     "sourceMap": false,
     "types": ["cypress"]
-  }
+  },
+  "env": {
+    "E2E_USERNAME": "luanbraga.lb@gmail.com",
+    "E2E_PASSWORD": "4041220@Lb"
+  },
+  "chromeWebSecurity": false
 }

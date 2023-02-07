@@ -37,3 +37,17 @@ Cypress.Commands.add('mount', mount)
 
 // Example use:
 // cy.mount(MyComponent)
+
+before(() => {
+  cy.visit('/')
+  cy.get('#login').click()
+  cy.signIn(
+    Cypress.env('E2E_USERNAME'),
+    Cypress.env('E2E_PASSWORD'),
+  )
+})
+
+after(() => {
+  cy.visit('/')
+  cy.get('#logout').click()
+})
