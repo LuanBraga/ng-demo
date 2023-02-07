@@ -3,10 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { EditComponent } from './edit/edit.component';
 import { SearchComponent } from './search/search.component';
 
+import { AuthGuard } from "@auth0/auth0-angular";
+
 const routes: Routes = [
-  { path: 'edit/:id', component: EditComponent },
-  { path: 'search', component: SearchComponent },
-  { path: '', redirectTo: '/search', pathMatch: 'full' }
+  { path: 'edit/:id', component: EditComponent, canActivate: [AuthGuard] },
+  { path: 'search', component: SearchComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
